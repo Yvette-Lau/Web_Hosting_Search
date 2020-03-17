@@ -1,0 +1,28 @@
+#banner{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+#bannerFoot{
+    text-align: right;
+    height: 29px;
+}
+
+#mainPageContainer{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.mainRow{
+    padding-bottom: 3px;
+    width: auto;
+}
+
+.mainContainer{
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+

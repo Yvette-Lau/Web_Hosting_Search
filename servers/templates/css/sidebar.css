@@ -1,0 +1,25 @@
+.list-group-item{
+    padding-bottom: 20px;
+    text-align: left;
+    font-size: x-large;
+}
+.list-group-item a{
+    color: inherit;
+}
+
+#listGroupContainer{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+.card{
+   margin-bottom: 4px;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 55%;
+}
+.sideContainer{
+    margin-left: 2px;
+}
