@@ -20,36 +20,36 @@
 </head>
 <body>
     <!-- Side bar   -->
-    <div class="content col-lg-2">
-        <!-- Profile card       -->
-        <div class="row">
-            <div class="sideContainer">
-                <div class="card">
-                    <div class="card-body">
-                        <img src="./images/user.jpg" class="img-circle center" alt="user.jpg">
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!--<div class="content col-lg-1">-->
+        <!--&lt;!&ndash; Profile card       &ndash;&gt;-->
+        <!--<div class="row">-->
+            <!--<div class="sideContainer">-->
+                <!--<div class="card">-->
+                    <!--<div class="card-body">-->
+                        <!--<img src="./images/user.jpg" class="img-circle center" alt="user.jpg">-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
 
-        <!--   sidebar menu         -->
-        <div class="row">
-            <div class="sideContainer">
-                <div class="col-md-12" id="listGroupContainer">
-                    <ul class="list-group">
-                        <li class="list-group-item active"><a href=""><i class="fas fa-home"></i> Home</a></li>
-                        <li class="list-group-item"><a href=""><i class="fas fa-user-circle"></i> profile</a></li>
-                        <li class="list-group-item"><a href=""><i class="fas fa-tasks"></i> Tasks</a></li>
-                        <li class="list-group-item"><a href=""><i class="far fa-clipboard"></i> clipboard</a></li>
-                        <li class="list-group-item"><a href=""><i class="fas fa-tools"></i> Settings</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+        <!--&lt;!&ndash;   sidebar menu         &ndash;&gt;-->
+        <!--<div class="row">-->
+            <!--<div class="sideContainer">-->
+                <!--<div class="col-md-12" id="listGroupContainer">-->
+                    <!--<ul class="list-group">-->
+                        <!--<li class="list-group-item active"><a href=""><i class="fas fa-home"></i> Home</a></li>-->
+                        <!--<li class="list-group-item"><a href=""><i class="fas fa-user-circle"></i> profile</a></li>-->
+                        <!--<li class="list-group-item"><a href=""><i class="fas fa-tasks"></i> Tasks</a></li>-->
+                        <!--<li class="list-group-item"><a href=""><i class="far fa-clipboard"></i> clipboard</a></li>-->
+                        <!--<li class="list-group-item"><a href=""><i class="fas fa-tools"></i> Settings</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
     <!-- main page   -->
-    <div class="content col-lg-10" id="mainPageContainer">
+    <div class="content col-lg-12" id="mainPageContainer">
 
     <!--        banner-->
         <div class="row mainRow">
@@ -67,61 +67,68 @@
             </div>
         </div>
 
-        <!--        search engine-->
-        <div class="row mainRow">
-            <div class="mainContainer">
-                <div id="navBarContainer">
-                    <nav class="navbar navbar-expand-sm bg-info navbar-dark">
-                        <form class="form-inline text-right">
-                            <input class="form-control" type="text" placeholder="Search">
-                            <button class="btn btn-success" type="submit">Search</button>
-                        </form>
-                    </nav>
+
+        <div id="searchTable">
+
+            <!--        search engine-->
+            <div class="row mainRow">
+                <div class="mainContainer">
+                    <div id="navBarContainer">
+                        <nav class="navbar navbar-expand-sm bg-info navbar-dark">
+                            <div class="form-inline text-right"  method="get">
+                                <input class="form-control" type="text" placeholder="Search" v-model="serverName">
+                                <button class="btn btn-success" type="submit" name="button" @click="search()">Search</button>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        <!--        tables information-->
+            <div class="row mainRow" id ="serverTable">
+                <div class="mainContainer table-responsive">
+                    <table class="table table-striped">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>ID</th>
+                            <th>ServerName</th>
+                            <th>Operating System</th>
+                            <th>Logical Drive Details</th>
+                            <th>Processors</th>
+                            <th>RAM</th>
+                            <th>Server Location</th>
+                            <th>IP Address(Internal)</th>
+                            <th>Subnet Mask</th>
+                            <th>Gateway</th>
+                            <th>DNS</th>
+                            <th>VLAN</th>
+                            <th>IP address(External)</th>
+                            <th>MNS Management IP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for = "server in servers">
+                            <td>{{ server.id }}</td>
+                            <td>{{ server.serverName }}</td>
+                            <td>{{ server.serverOS }}</td>
+                            <td>{{ server.serverLogicalDrive }}</td>
+                            <td>{{ server.serverProcessors }}</td>
+                            <td>{{ server.Ram }}</td>
+                            <td>{{ server.serverLocation }}</td>
+                            <td>{{ server.serverIpInternal }}</td>
+                            <td>{{ server.serverSubnetMask }}</td>
+                            <td>{{ server.serverGateway}}</td>
+                            <td>{{ server.serverDns }}</td>
+                            <td>{{ server.serverVlan }}</td>
+                            <td>{{ server.serverIpExternal }}</td>
+                            <td>{{ server.serverMns}}</td>
+                        </tr>
+                    </tbody>
+                </table>
                 </div>
             </div>
         </div>
 
-        <!--        tables information-->
-        <div class="row mainRow" id ="serverTable">
-            <div class="mainContainer">
-                <table class="table table-striped">
-                <thead class="thead-inverse">
-                    <tr>
-                        <th>ServerName</th>
-                        <th>Operating System</th>
-                        <th>Logical Drive Details</th>
-                        <th>Processors</th>
-                        <th>RAM</th>
-                        <th>Server Location</th>
-                        <th>IP Address(Internal)</th>
-                        <th>Subnet Mask</th>
-                        <th>Gateway</th>
-                        <th>DNS</th>
-                        <th>VLAN</th>
-                        <th>IP address(External)</th>
-                        <th>MNS Management IP</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for = "server in servers">
-                        <td>{{ server.name }}</td>
-                        <td>{{ server.os }}</td>
-                        <td>{{ server.logicalDrive }}</td>
-                        <td>{{ server.processors }}</td>
-                        <td>{{ server.ram }}</td>
-                        <td>{{ server.location }}</td>
-                        <td>{{ server.ipInternal }}</td>
-                        <td>{{ server.subnetMask }}</td>
-                        <td>{{ server.gateway}}</td>
-                        <td>{{ server.dns }}</td>
-                        <td>{{ server.vlan }}</td>
-                        <td>{{ server.ipExternal }}</td>
-                        <td>{{ server.mns}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            </div>
-        </div>
 
         <!--        pagination-->
         <div class="row mainRow">
@@ -141,17 +148,38 @@
 
     <script>
         var vm = new Vue({
-            el: '#serverTable',
+            el: '#searchTable',
             data() {
                 return{
                     servers: null
+                }
+            },
+            methods:{
+                search: function () {
+                    axios
+                    .get('http://127.0.0.1:8000/servers/serverInfo/',{
+                        params:{
+                            serverName:this.serverName,
+                        },
+                    })
+                    .then(response => {
+                        this.servers = response.data.servers;
+                        console.log(response)
+                        // alert(response.data.msg);
+                    })
+                    .catch(error => {
+                        console.log(error)
+
+                    })
                 }
             },
             mounted(){
                 axios
                     .get('http://127.0.0.1:8000/servers/serverInfo/')
                     .then(response => {
-                        this.servers = response
+                        this.servers = response.data.servers
+                        // console.log(response)
+                        // alert(response.data.msg);
                     })
                     .catch(error => {
                         console.log(error)

@@ -16,4 +16,7 @@ class ServerInfo(models.Model):
     serverVlan = models.CharField(max_length=50)
     serverIpExternal = models.GenericIPAddressField()
     serverMns = models.CharField(max_length=100)
+    object = models.Manager()
 
+    def __str__(self):
+        return self.serverName
