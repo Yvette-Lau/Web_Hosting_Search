@@ -59,6 +59,10 @@ import json
 #     return JsonResponse(data)
 
 
+def index(request):
+    return render(request, 'index.html')
+
+
 def serverInfo(request):
     try:
         serverName = request.GET.get("serverName")
