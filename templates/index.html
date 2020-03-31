@@ -91,6 +91,8 @@
                 <div class="mainContainer table-responsive">
                     <table class="table table-striped" style="table-layout:fixed;" width="100%">
                     <thead class="thead-inverse">
+                     {% verbatim myblock %}
+
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
@@ -115,7 +117,7 @@
                             <td>{{ server.serverOS }}</td>
                             <td>{{ server.serverLogicalDrive }}</td>
                             <td>{{ server.serverProcessors }}</td>
-                            <td>{{ server.Ram }}</td>
+                            <td>{{ server.serverRam }}</td>
                             <td>{{ server.serverLocation }}</td>
                             <td>{{ server.serverIpInternal }}</td>
                             <td>{{ server.serverSubnetMask }}</td>
@@ -125,6 +127,8 @@
                             <td>{{ server.serverIpExternal }}</td>
                             <td>{{ server.serverMns}}</td>
                         </tr>
+                     {% endverbatim myblock %}
+                    
                     </tbody>
                 </table>
                 </div>
@@ -180,7 +184,8 @@
                 axios
                     .get('http://127.0.0.1:8000/servers/serverInfo/')
                     .then(response => {
-                        this.servers = response.data.servers
+                        // this.servers = response.data.servers
+                        this.servers = [{"id": 1, "serverName": "rhlab1", "serverOS": "Linux", "serverLogicalDrive": "256GB", "serverProcessors": "4 Cores", "serverRam": "TBC", "serverLocation": "Halifax", "serverIpInternal": "10.100.107.23", "serverSubnetMask": "255.155.255.0", "serverGateway": "10.100.107.254", "serverDns": "TBC", "serverVlan": "TBC", "serverIpExternal": "TBC", "serverMns": "TBC"}, {"id": 2, "serverName": "rhlab2", "serverOS": "Linux", "serverLogicalDrive": "256GB", "serverProcessors": "4 Cores", "serverRam": "TBC", "serverLocation": "Halifax", "serverIpInternal": "10.100.107.24", "serverSubnetMask": "255.155.255.0", "serverGateway": "10.100.107.254", "serverDns": "TBC", "serverVlan": "TBC", "serverIpExternal": "10.10.10.10", "serverMns": "TBC"}, {"id": 3, "serverName": "MGPHFXANS01", "serverOS": "Linux", "serverLogicalDrive": "256GB", "serverProcessors": "4 Cores", "serverRam": "TBC", "serverLocation": "Halifax", "serverIpInternal": "10.100.107.25", "serverSubnetMask": "255.155.255.0", "serverGateway": "10.100.107.254", "serverDns": "mgphfxans01.example.ca", "serverVlan": "TBC", "serverIpExternal": "10.10.10.10", "serverMns": "TBC"}, {"id": 4, "serverName": "MGPSJHANS02", "serverOS": "Linux", "serverLogicalDrive": "256GB", "serverProcessors": "4 Cores", "serverRam": "TBC", "serverLocation": "Halifax", "serverIpInternal": "10.100.107.26", "serverSubnetMask": "255.255.255.0", "serverGateway": "10.100.107.254", "serverDns": "mgphfxans02.example.ca", "serverVlan": "vlan3", "serverIpExternal": "10.10.10.10", "serverMns": "TBC"}, {"id": 5, "serverName": "MGPSJHANS03", "serverOS": "Linux", "serverLogicalDrive": "256GB", "serverProcessors": "4 Cores", "serverRam": "TBC", "serverLocation": "saint John", "serverIpInternal": "10.100.107.27", "serverSubnetMask": "255.255.255.0", "serverGateway": "10.100.107.254", "serverDns": "mgpsjhxans02.example.ca", "serverVlan": "vlan3", "serverIpExternal": "10.10.10.10", "serverMns": "TBC"}]
                         // console.log(response)
                         // alert(response.data.msg);
                     })
